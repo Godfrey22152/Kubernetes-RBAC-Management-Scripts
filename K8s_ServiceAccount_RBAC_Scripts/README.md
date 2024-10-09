@@ -111,8 +111,8 @@ This project includes several files that automate the creation and deletion of R
  1. **Clone the repository**:
 
     ```bash
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/Godfrey22152/Kubernetes-RBAC-Management-Scripts.git
+    cd Kubernetes-RBAC-Management-Scripts/K8s_ServiceAccount_RBAC_Scripts
     ``` 
 
  2. **Ensure permissions**: Make sure you have permissions to create service accounts and RBAC resources on your cluster.
