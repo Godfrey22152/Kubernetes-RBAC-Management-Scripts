@@ -41,7 +41,7 @@ This project provides a comprehensive toolkit for automating the installation an
 - [Directory Structure](#directory-structure)
 - [Prerequisites](#prerequisites)
   - [K8s Cluster Kubeadm Setup](#K8s-Cluster-Kubeadm-Setup)
-  - [Kubernetes RBAC Management](#K8s-RBAC-Management)
+  - [K8s RBAC Management](#K8s-RBAC-Management)
   - [Minikube K8s RBAC Scripts](#Minikube-K8s-RBAC-Scripts)
   - [K8s ServiceAccount RBAC Scripts](#K8s-ServiceAccount-RBAC-Scripts)
   - [Jenkins ServiceAccount RBAC Scripts](#Jenkins-ServiceAccount-RBAC-Scripts)
@@ -81,14 +81,14 @@ Kubernetes-RBAC-Management-Scripts/
 
 ## Prerequisites
 
-### Kubernetes Cluster Kubeadm Setup
+### K8s Cluster Kubeadm Setup
 - **Operating System**: Ubuntu 20.04 or later (other Linux distributions may work with minor modifications).
 - **Networking**: Ensure that your network is configured to allow communication between Kubernetes nodes.
 - Root or sudo privileges
 - Basic understanding of Linux commands 
 - **See README.md file in directory before running the scripts**
 
-### Kubernetes RBAC Management
+### K8s RBAC Management 
 - Kubernetes cluster up and running
 - **Kubectl Configured**: Your `kubectl` must be configured to interact with your cluster.
 - **YQ (YAML Query tool)**: This tool `yq` is required to parse YAML configuration files.
