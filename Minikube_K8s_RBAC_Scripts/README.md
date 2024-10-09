@@ -81,7 +81,7 @@ The project consists of the following key components:
    - After successful resource creation, the `create_users_rbac.sh`script outputs an output: "All resources created successfully.!!!" 
 
 ## Verification of Created Resources
-  ### Verify Created Resources:**
+  ### Verify Created Resources:
 
    Use the following commands to verify the created resources:
 
@@ -102,56 +102,59 @@ The project consists of the following key components:
        kubectl config use-context admin-user-context
       ```
 
-    - **Verify Userss:**
-      ```bash
-       kubectl config get-users
-      ```
+   - **Verify Userss:**
+     ```bash
+     kubectl config get-users
+     ```
 
-    - **Verify User/Group Certificates**
-      ```bash
-      ls -l $HOME/.minikube/users/
+   - **Verify User/Group Certificates**
+     ```bash
+     ls -l $HOME/.minikube/users/
 
-      ls $HOME/.minikube/developers/
+     ls $HOME/.minikube/developers/
 
-      ls $HOME/.minikube/interns
+     ls $HOME/.minikube/interns
 
-      ls $HOME/.minikube/support
+     ls $HOME/.minikube/support
 
-      ls $HOME/.minikube/testers
-      ```
+     ls $HOME/.minikube/testers
+     ```
 
    - **Verify Groups:**
      Check the created groups by reviewing the kubeconfig entries for group-based users.
      Or Check the ClusterRoleBindings:
 
-      ```bash
-       kubectl get clusterrolebindings
-      ```
+     ```bash
+     kubectl get clusterrolebindings
+     ```
 
    - **Verify ClusterRoles:**
-      ```bash
-       kubectl get clusterroles
-      ```
+     ```bash
+     kubectl get clusterroles
+     ```
 
    - **Verify ClusterRoleBindings:**
-      ```bash
-       kubectl get clusterrolebindings
-      ```
+     ```bash
+     kubectl get clusterrolebindings
+     ```
 
    - **Verify Specicfic ClusterRoleBinding Details of the Users/Groups in YAML Format**
      - The following command retrieves the configuration details of the ClusterRoleBinding for a specific subject (user, group, or service account), with the subject's name `${SUBJECT_NAME}-binding`a placeholder for the actual name on the `rbac_config.yaml` and displays the result in YAML format:
 
-      ```bash
-       kubectl get clusterrolebinding ${SUBJECT_NAME}-binding -o yaml
-      ```
-     - **For example, if the subject is named admin-user or developers, the command would become:**
 
-      ```bash
-       kubectl get clusterrolebinding admin-user-binding -o yaml
+     ```bash
+     kubectl get clusterrolebinding ${SUBJECT_NAME}-binding -o yaml
+     ```
+     **For example, if the subject is named admin-user or developers, the command would become:**
 
-       kubectl get clusterrolebinding developers-binding -o yaml
-      ```
+     ```bash
+     kubectl get clusterrolebinding admin-user-binding -o yaml
+
+     kubectl get clusterrolebinding developers-binding -o yaml
+     ```
+
       - **Purpose:** A ClusterRoleBinding binds a user or group to a ClusterRole, granting them specific permissions cluster-wide. This command helps inspect the admin-user-binding ClusterRoleBinding's configuration, including which users, groups, or service accounts it applies to.
+
       - **Output Format:** The -o yaml flag outputs the result in YAML format, which is useful for reviewing or modifying configurations in a structured, human-readable format.
 
    - **Verify Individual Permissions of Users:**
@@ -162,12 +165,13 @@ The project consists of the following key components:
      - RESOURCE: The resource type (e.g., pod, service, deployment).
      - --as=<USER>: Specify the user whose permissions you want to verify.
 
-     - **Example for a specific user:**
+     **Example for a specific user:**
       To verify if the user admin-user can create pods, the command would be:
 
       ```bash
        kubectl auth can-i create pods --as=admin-user
       ```
+
       - **Additional Verification for Group Permissions:**
       If you want to check the permissions of a group, you can use the --as-group=<GROUP> flag:
 
@@ -177,7 +181,7 @@ The project consists of the following key components:
 
 ## Deletion of Resources
 
- ### Delete Resources:**
+ ### Delete Resources:
 
    When the resources are no longer needed, use the `delete_users_rbac.sh` script to clean up:
 
