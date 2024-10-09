@@ -1,4 +1,4 @@
-# Project Name: [Your Project Name Here]
+# Kubernetes Role-Based Access Control (RBAC) Management Scripts
 
 ## Project Overview
 
@@ -40,11 +40,11 @@ This project provides a comprehensive toolkit for automating the installation an
 - [Directory Key Features](#directory-key-features)
 - [Directory Structure](#directory-structure)
 - [Prerequisites](#prerequisites)
-  - [K8s Cluster Kubeadm Setup](#K8s_Cluster_Kubeadm_Setup)
-  - [Kubernetes RBAC Management](#K8s_RBAC_Management)
-  - [Minikube K8s RBAC Scripts](#Minikube_K8s_RBAC_Scripts)
-  - [K8s Service Account RBAC Scripts](#K8s_ServiceAccount_RBAC_Scripts)
-  - [Jenkins Service Account RBAC Scripts](#Jenkins_ServiceAccount_RBAC_Scripts)
+  - [K8s Cluster Kubeadm Setup](#K8s-Cluster-Kubeadm-Setup)
+  - [Kubernetes RBAC Management](#K8s-RBAC-Management)
+  - [Minikube K8s RBAC Scripts](#Minikube-K8s-RBAC-Scripts)
+  - [K8s ServiceAccount RBAC Scripts](#K8s-ServiceAccount-RBAC-Scripts)
+  - [Jenkins ServiceAccount RBAC Scripts](#Jenkins-ServiceAccount-RBAC-Scripts)
 - [Installation](#installation)
 - [Usage](#usage)
 - [References](#references)
@@ -88,7 +88,7 @@ Kubernetes-RBAC-Management-Scripts/
 - Basic understanding of Linux commands 
 - **See README.md file in directory before running the scripts**
 
-### Kubernetes RBAC Setup and Management
+### Kubernetes RBAC Management
 - Kubernetes cluster up and running
 - **Kubectl Configured**: Your `kubectl` must be configured to interact with your cluster.
 - **YQ (YAML Query tool)**: This tool `yq` is required to parse YAML configuration files.
@@ -103,13 +103,13 @@ Kubernetes-RBAC-Management-Scripts/
 - A valid `rbac_config.yaml` file containing user and group configurations.
 - **See README.md file in directory before running the scripts**
 
-### K8s Service Account RBAC Scripts
+### K8s ServiceAccount RBAC Scripts
 - Kubernetes cluster (Minikube or any Kubernetes setup).
 - `kubectl` command-line tool installed and configured.
 - `yq` tool for parsing YAML files.
 - **See README.md file in directory before running the scripts**
 
-### Jenkins Service Account RBAC Scripts
+### Jenkins ServiceAccount RBAC Scripts
 - Kubernetes cluster (Minikube or any Kubernetes setup).
 - `kubectl` command-line tool installed and configured.
 - `jenkins_rbac_config.yaml` file defining the Role and RoleBinding.
