@@ -1,0 +1,55 @@
+#ClusterRoles and ClusterRole Binding for Users and Groups
+users:
+  - name: "admin-user"
+    role: "admin-role"
+    permissions:
+      - apiGroups: ["*"]
+        resources: ["*"]
+        verbs: ["*"]
+
+  - name: "devops-engineer"
+    role: "DevOps-role"
+    permissions:
+      - apiGroups: [""]
+        resources: ["pods", "services", "endpoints", "namespaces", "configmaps", "secrets"]
+        verbs: ["get", "list", "watch", "delete"]
+      - apiGroups: ["apps", "extensions"]
+        resources: ["deployments", "replicasets", "daemonsets", "statefulsets"]
+        verbs: ["get", "list", "watch", "delete"]
+      - apiGroups: ["batch"]
+        resources: ["jobs", "cronjobs"]
+        verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+  - name: "developers"
+    role: "dev-role"
+    permissions:
+      - apiGroups: [""]
+        resources: ["pods", "services", "endpoints", "namespaces"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: ["apps", "extensions"]
+        resources: ["deployments", "replicasets", "daemonsets", "statefulsets"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: ["batch"]
+        resources: ["jobs", "cronjobs"]
+        verbs: ["get", "list", "watch"]
+
+  - name: "interns"
+    role: "pod-and-pod-logs-reader"
+    permissions:
+      - apiGroups: [""]
+        resources: ["pods", "pods/log"]
+        verbs: ["get", "list", "watch"]
+
+  - name: "testers"
+    role: "test-role"
+    permissions:
+      - apiGroups: [""]
+        resources: ["configmaps", "services", "endpoints", "secrets"]
+        verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+  - name: "support"
+    role: "support-role"
+    permissions:
+      - apiGroups: [""]
+        resources: ["namespaces"]
+        verbs: ["get", "list"]
