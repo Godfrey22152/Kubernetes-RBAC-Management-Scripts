@@ -69,6 +69,12 @@ This project includes several files that automate the creation and deletion of R
 
      **Example usage**:
 
+       **Clone this repository**:
+       ```bash
+       git clone https://github.com/Godfrey22152/Kubernetes-RBAC-Management-Scripts.git
+       cd Kubernetes-RBAC-Management-Scripts/K8s_ServiceAccount_RBAC_Scripts
+       ```
+
        ```bash
         # Make script executable
        sudo chmod +x sa_create_K8s_rbac.sh

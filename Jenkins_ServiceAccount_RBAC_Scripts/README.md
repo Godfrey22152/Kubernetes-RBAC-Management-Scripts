@@ -110,8 +110,8 @@ To create the Jenkins ServiceAccount and associated RBAC resources, run the `cre
 1. Clone the repository and navigate to the project directory.
 
    ```bash
-   git clone <Project repository> 
-   cd <Project Directory>
+   git clone https://github.com/Godfrey22152/Kubernetes-RBAC-Management-Scripts.git
+   cd Kubernetes-RBAC-Management-Scripts/Jenkins_ServiceAccount_RBAC_Scripts 
    ```
 2. Make the `create_jenkins_rbac.sh` script executable:
    ```bash

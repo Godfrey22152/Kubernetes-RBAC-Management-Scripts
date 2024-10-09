@@ -42,8 +42,8 @@ The project consists of the following key components:
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/Godfrey22152/Kubernetes-RBAC-Management-Scripts.git
+   cd Kubernetes-RBAC-Management-Scripts/K8s_RBAC_Management 
    ```
 
 2. **Install Required Tools:**
