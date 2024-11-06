@@ -36,8 +36,10 @@ EOF
 # Function to install containerd
 install_containerd() {
   echo "Installing containerd..."
-  curl -LO https://github.com/containerd/containerd/releases/download/v1.7.14/containerd-1.7.14-linux-amd64.tar.gz || { echo "Failed to download containerd"; exit 1; }
+  curl -LO https://github.com/containerd/containerd/releases/download/v1.7.14/containerd-1.7.14-linux-amd64.tar.gz || { echo "Failed to 
+download containerd"; exit 1; }
   sudo tar Cxzvf /usr/local containerd-1.7.14-linux-amd64.tar.gz
+  rm containerd-1.7.14-linux-amd64.tar.gz
   curl -LO https://raw.githubusercontent.com/containerd/containerd/main/containerd.service || { echo "Failed to download containerd.service"; exit 1; }
   sudo mkdir -p /usr/local/lib/systemd/system/
   sudo mv containerd.service /usr/local/lib/systemd/system/
@@ -54,16 +56,18 @@ install_containerd() {
 # Function to install runc
 install_runc() {
   echo "Installing runc..."
-  curl -LO https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.amd64 || { echo "Failed to download runc"; exit 1; }
+  curl -LO https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.amd64 || { echo "Failed to download runc"; exit 1; }   
   sudo install -m 755 runc.amd64 /usr/local/sbin/runc || { echo "Failed to install runc"; exit 1; }
 }
 
 # Function to install CNI plugins
 install_cni() {
   echo "Installing CNI plugins..."
-  curl -LO https://github.com/containernetworking/plugins/releases/download/v1.5.0/cni-plugins-linux-amd64-v1.5.0.tgz || { echo "Failed to download CNI plugins"; exit 1; }
+  curl -LO https://github.com/containernetworking/plugins/releases/download/v1.5.0/cni-plugins-linux-amd64-v1.5.0.tgz || { echo "Failed 
+to download CNI plugins"; exit 1; }
   sudo mkdir -p /opt/cni/bin
   sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.5.0.tgz || { echo "Failed to extract CNI plugins"; exit 1; }
+  rm cni-plugins-linux-amd64-v1.5.0.tgz
 }
 
 # Function to install Kubernetes tools
@@ -94,11 +98,11 @@ configure_crictl() {
 # Function to initialize Kubernetes control plane (Master node)
 init_master_node() {
   echo "Initializing Kubernetes control plane..."
-  sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<Master-Node-IP> --node-name master || { echo "Failed to initialize master node"; exit 1; }
+  sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=192.168.56.10 --node-name master || { echo "Failed to initialize master node"; exit 1; }
 
   # Save join command
   echo "Saving kubeadm join command..."
-  kubeadm token create --print-join-command > /tmp/kubeadm_join_command.txt
+  sudo bash -c "kubeadm token create --print-join-command > /tmp/kubeadm_join_command.txt"
   echo "Join command saved to /tmp/kubeadm_join_command.txt"
 }
 
@@ -106,6 +110,7 @@ init_master_node() {
 setup_kubeconfig() {
   echo "Configuring kubeconfig..."
   sudo mkdir -p $HOME/.kube
+  sudo chown $(id -u):$(id -g) /etc/kubernetes/admin.conf
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 }
