@@ -196,5 +196,8 @@ This is not the latest version of calico though(v.3.25). This deploys CNI in kub
     sudo chmod +x setup_K8s.sh
 
     #Run the bash script 
-    ./setup_K8s.sh
+    ./setup_K8s.sh master   # For Master node
+
+    ./setup_K8s.sh worker    # For Worker node    
+
     ```
