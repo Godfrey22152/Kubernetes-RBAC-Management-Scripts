@@ -1,5 +1,5 @@
 # Setup a Multi Node Kubernetes Cluster Using Kubeadm
-Here is a detailed step-by-step guide and also how you can automate the creation using a bash script.
+Here is a detailed step-by-step guide on how to create a multi-node kubernetes cluster using `kubeadm` after going through this detailed guide you should also see the `setup_k8s.sh` script which is a detailed script to automate the creation using a bash script. **HAPPY READING**
 
 ## Check out this video below 👇
 
@@ -158,7 +158,7 @@ kubectl apply -f custom-resources.yaml
 - Run the command generated in step 9 on the Master node which is similar to below
 
 ```
-sudo kubeadm join 172.31.71.210:6443 --token xxxxx --discovery-token-ca-cert-hash sha256:xxx
+sudo kubeadm join 192.168.56.10:6443 --token xxxxx --discovery-token-ca-cert-hash sha256:xxx
 ```
 - If you forgot to copy the command, you can execute below command on master node to generate the join command again
 
@@ -196,8 +196,37 @@ This is not the latest version of calico though(v.3.25). This deploys CNI in kub
     sudo chmod +x setup_K8s.sh
 
     #Run the bash script 
-    ./setup_K8s.sh master   # For Master node
+    ./setup_k8s.sh master   # For Master node
 
-    ./setup_K8s.sh worker    # For Worker node    
+    ./setup_k8s.sh worker    # For Worker node    
 
     ```
+    >**After running the `setup_k8s.sh` script in both master and worker nodes**: To enable a worker node to use kubectl with access to the master’s configuration, you have to manually copy the admin.conf file from the master node to the worker node and set up the KUBECONFIG environment variable accordingly.
+    
+    1. **Copy the `admin.conf` from Master to Worker Node**: On the master node, copy **/etc/kubernetes/admin.conf** to the worker node:
+    ```bash
+     sudo cat /etc/kubernetes/admin.conf
+    ```
+    
+    2. **On the worker node**, create a local config directory for Kubernetes: 
+    ```bash
+     mkdir -p $HOME/.kube
+    ```
+    
+    3. **Then, copy the config content into `$HOME/.kube/config` on the worker node (you can paste it into the appropriate location).
+    ```bash
+     sudo nano $HOME/.kube/config    # Then paste the content of `/etc/kubernetes/admin.conf` you copied from the master node.
+    ```
+    
+    4. **Ensure the file permissions**
+    ```bash
+     sudo chown $(id -u):$(id -g) $HOME/.kube/config
+    ```
+    
+    5. **Verify that worker node can now access**: After these steps, you should be able to run kubectl commands from the worker node
+    ```bash
+     kubectl get nodes
+    ```
+
+
+    
