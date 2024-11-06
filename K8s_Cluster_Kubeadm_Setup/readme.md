@@ -201,29 +201,34 @@ This is not the latest version of calico though(v.3.25). This deploys CNI in kub
     ./setup_k8s.sh worker    # For Worker node    
 
     ```
->**After running the `setup_k8s.sh` script in both master and worker nodes**: To enable a worker node to use kubectl with access to the master’s configuration, you have to manually copy the admin.conf file from the master node to the worker node and set up the KUBECONFIG environment variable accordingly.
+
+### NOTE: 
+
+**After running the `setup_k8s.sh` script in both master and worker nodes**: To enable a worker node to use kubectl with access to the master’s configuration, you have to manually copy the admin.conf file from the master node to the worker node and set up the KUBECONFIG environment variable accordingly.
     
-   1. **Copy the `admin.conf` from Master to Worker Node**: On the master node, copy **/etc/kubernetes/admin.conf** to the worker node:
+ 1. **Copy the `admin.conf` from Master to Worker Node**: On the master node, copy **/etc/kubernetes/admin.conf** to the worker node:
+ 
     ```bash
-     sudo cat /etc/kubernetes/admin.conf
+    sudo cat /etc/kubernetes/admin.conf
     ```
     
-   2. **On the worker node**, create a local config directory for Kubernetes: 
+ 2. **On the worker node**, create a local config directory for Kubernetes: 
+
     ```bash
-     mkdir -p $HOME/.kube
+    mkdir -p $HOME/.kube
     ```
     
-   3. **Then, copy the config content into `$HOME/.kube/config` on the worker node (you can paste it into the appropriate location).
+ 3. **Then, copy the config content into `$HOME/.kube/config` on the worker node (you can paste it into the appropriate location).
     ```bash
     sudo nano $HOME/.kube/config    # Then paste the content of `/etc/kubernetes/admin.conf` you copied from the master node.
     ```
     
-   4. **Ensure the file permissions**
+ 4. **Ensure the file permissions**
     ```bash
-     sudo chown $(id -u):$(id -g) $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
     ```
     
-   5. **Verify that worker node can now access**: After these steps, you should be able to run kubectl commands from the worker node
+ 5. **Verify that worker node can now access**: After these steps, you should be able to run kubectl commands from the worker node
     ```bash
      kubectl get nodes
     ```
