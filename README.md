@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project provides a comprehensive toolkit for automating the installation and management of Kubernetes clusters using `RBAC`, including user and groups management and RBAC configuration. The toolkit consists of several scripts organized into directories, each designed to facilitate how to automate and manage Users and Groups in a kubernetes cluster using `RBAC`.
+This project provides a comprehensive toolkit for automating management of Kubernetes clusters using `RBAC`. It includes cluster user and groups management and RBAC configuration. The toolkit consists of several scripts organized into directories, each designed to facilitate how to automate and manage Users and Groups in a kubernetes cluster using `RBAC`.
 
 ## Directory Key Features
 
