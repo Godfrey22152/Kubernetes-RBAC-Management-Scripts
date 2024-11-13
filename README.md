@@ -6,30 +6,30 @@ This project provides a comprehensive toolkit for automating management of Kuber
 
 ## Directory Key Features
 
-### K8s Cluster Kubeadm Setup:- Key Features
+### [K8s Cluster Kubeadm Setup](./K8s_Cluster_Kubeadm_Setup):- Key Features
 - Automates the setup of multinode Kubernetes cluster using kubeadm.
 - A detailed `README.md` file for manual setup.
 
-### Kubernetes RBAC Management:- Key Features
+### [Kubernetes RBAC Management](./K8s_RBAC_Management):- Key Features
 - Automates the creation of Kubernetes users and RBAC policies.
 - Generates user certificates and kubeconfig files for secure access.
 - Supports group management with associated roles and permissions.
 - Configurable via a YAML file for easy adjustments.
 
-### Minikube K8s RBAC Scripts:- Key Features
+### [Minikube K8s RBAC Scripts](./Minikube_K8s_RBAC_Scripts):- Key Features
 - Automates the creation of Kubernetes users and RBAC policies.
 - Generates user certificates and kubeconfig files for secure access.
 - Supports group management with associated roles and permissions.
 - Configurable via a YAML file for easy adjustments.
 
-### K8s Service Account RBAC Scripts:- Key Features
+### [K8s Service Account RBAC Scripts](./K8s_ServiceAccount_RBAC_Scripts):- Key Features
 - Automates the creation of Kubernetes Service Accounts and RBAC policies.
 - Generates tokens for Service Accounts using the TokenRequest API.
 - Creates kubeconfig files for Service Accounts for easy access.
 - Supports defining user roles and permissions through a YAML configuration file.
 - Handles permissions parsing from YAML for flexible RBAC configurations.
 
-### Jenkins Service Account RBAC Scripts:- Key Features
+### [Jenkins Service Account RBAC Scripts](./Jenkins_ServiceAccount_RBAC_Scripts):- Key Features
 - Automates the creation of a Kubernetes namespace for Jenkins.
 - Creates a Jenkins ServiceAccount along with its Role and RoleBinding.
 - Verifies the creation of resources and retrieves the associated secret token.
@@ -86,14 +86,14 @@ Kubernetes-RBAC-Management-Scripts/
 - **Networking**: Ensure that your network is configured to allow communication between Kubernetes nodes.
 - Root or sudo privileges
 - Basic understanding of Linux commands 
-- **See README.md file in directory before running the scripts**
+- **See [README.md](./K8s_Cluster_Kubeadm_Setup/readme.md) file in directory before running the scripts**
 
 ### K8s RBAC Management 
 - Kubernetes cluster up and running
 - **Kubectl Configured**: Your `kubectl` must be configured to interact with your cluster.
 - **YQ (YAML Query tool)**: This tool `yq` is required to parse YAML configuration files.
 - OpenSSL installed for certificate generation.
-- **See README.md file in directory before running the scripts**
+- **See [README.md](./K8s_RBAC_Management/README.md) file in directory before running the scripts**
 
 ### Minikube K8s RBAC Scripts
 - Minikube installed and running on your local machine.
@@ -101,19 +101,19 @@ Kubernetes-RBAC-Management-Scripts/
 - `yq` installed for parsing YAML files.
 - OpenSSL installed for certificate generation.
 - A valid `rbac_config.yaml` file containing user and group configurations.
-- **See README.md file in directory before running the scripts**
+- **See [README.md](./Minikube_K8s_RBAC_Scripts/README.md) file in directory before running the scripts**
 
 ### K8s ServiceAccount RBAC Scripts
 - Kubernetes cluster (Minikube or any Kubernetes setup).
 - `kubectl` command-line tool installed and configured.
 - `yq` tool for parsing YAML files.
-- **See README.md file in directory before running the scripts**
+- **See [README.md](./K8s_ServiceAccount_RBAC_Scripts/README.md) file in directory before running the scripts**
 
 ### Jenkins ServiceAccount RBAC Scripts
 - Kubernetes cluster (Minikube or any Kubernetes setup).
 - `kubectl` command-line tool installed and configured.
 - `jenkins_rbac_config.yaml` file defining the Role and RoleBinding.
-- **See README.md file in directory before running the scripts**
+- **See [README.md](./Jenkins_ServiceAccount_RBAC_Scripts/README.md) file in directory before running the scripts**
 
 ## Installation
 1. Clone this repository:
@@ -158,7 +158,7 @@ Kubernetes-RBAC-Management-Scripts/
    ```
 
 ## Usage
-Follow the instructions in each directory's README.md file for detailed usage of the scripts provided.
+Follow the instructions in each directory's `README.md` file for detailed usage of the scripts provided.
 
 ## References
 
