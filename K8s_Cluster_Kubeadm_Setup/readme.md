@@ -207,7 +207,7 @@ This is not the latest version of calico though(v.3.25). This deploys CNI in kub
 
 3. **RUN THE BASH SCRIPT FOR WORKER NODE BUT**:
      
- - **First, copy the file `/tmp/kubeadm_join_command.txt` and the content of the file and save it in each of the `worker` nodes. When the script is run with the `worker` argument, the `join_worker_node` function is called. This function reads the join command from `/tmp/kubeadm_join_command.txt` file and executes it to join the worker node to the cluster**.
+ - **First, copy the file `/tmp/kubeadm_join_command.txt` and the content of the file from the `master node` and save it in each of the `worker` nodes. This is beacause when the script is run in the `worker node` with the `worker` argument, the `join_worker_node` function is called. This function reads the join command from `/tmp/kubeadm_join_command.txt` file and executes it to join the worker node to the cluster**.
  
  - **Then Proceed to run the script**:
     ```bash     
