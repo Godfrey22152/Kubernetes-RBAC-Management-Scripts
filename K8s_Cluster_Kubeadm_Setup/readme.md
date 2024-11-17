@@ -190,26 +190,26 @@ Where ens5 is your default interface, you can confirm by running `ifconfig` on a
 This is not the latest version of calico though(v.3.25). This deploys CNI in kube-system NS. 
 
 ---
-## TO AUTOMATE THESE STEPS SIMPLY RUN THE `setup_K8s.sh` FILE BUT ENSURE YOU MAKE THE FILE EXECUTABLE
+## TO AUTOMATE THESE STEPS SIMPLY RUN THE `setup_K8s.sh` FILE BUT ENSURE: 
 
-- 1. **YOU MAKE THE FILE EXECUTABLE**:
+1. **YOU MAKE THE FILE EXECUTABLE**:
 
     ```bash
     #Make file executable
     sudo chmod +x setup_K8s.sh
     ```
 
-- 2. **Run the Bash Script for Master Node**:
+2. **RUN THE BASH SCRIPT FOR MASTER NODE**:
 
     ```bash 
     ./setup_k8s.sh master
     ```   
 
-- 3. **Run the Bash Script for Worker Nodes but**:
+3. **RUN THE BASH SCRIPT FOR WORKER NODE BUT**:
      
-  - **First, copy the file `/tmp/kubeadm_join_command.txt` and the content of the file and save it in each of the `worker` nodes. When the script is run with the `worker` argument, the `join_worker_node` function is called. This function reads the join command from `/tmp/kubeadm_join_command.txt` file and executes it to join the worker node to the cluster.
+ - **First, copy the file `/tmp/kubeadm_join_command.txt` and the content of the file and save it in each of the `worker` nodes. When the script is run with the `worker` argument, the `join_worker_node` function is called. This function reads the join command from `/tmp/kubeadm_join_command.txt` file and executes it to join the worker node to the cluster**.
  
-  - **Then Proceed to run the script**:
+ - **Then Proceed to run the script**:
     ```bash     
     ./setup_k8s.sh worker       
     ```
@@ -230,7 +230,7 @@ This is not the latest version of calico though(v.3.25). This deploys CNI in kub
     mkdir -p $HOME/.kube
     ```
     
- 3. **Then, copy the config content into `$HOME/.kube/config` on the worker node (you can paste it into the appropriate location).
+ 3. **Then, copy the config content into `$HOME/.kube/config` on the worker node (you can paste it into the appropriate location)**
     ```bash
     sudo nano $HOME/.kube/config    # Then paste the content of `/etc/kubernetes/admin.conf` you copied from the master node.
     ```
