@@ -189,24 +189,36 @@ Where ens5 is your default interface, you can confirm by running `ifconfig` on a
 
 This is not the latest version of calico though(v.3.25). This deploys CNI in kube-system NS. 
 
-## TO AUTOMATE THESE STEPS SIMPLY RUN THE `setup_K8s.sh` FILE BUT ENSURE YOU MAKE THE FILE EXECUTABLE 
+---
+## TO AUTOMATE THESE STEPS SIMPLY RUN THE `setup_K8s.sh` FILE BUT ENSURE YOU MAKE THE FILE EXECUTABLE
+
+- 1. **YOU MAKE THE FILE EXECUTABLE**:
 
     ```bash
     #Make file executable
     sudo chmod +x setup_K8s.sh
+    ```
 
-    #Run the bash script 
-    ./setup_k8s.sh master   # For Master node
+- 2. **Run the Bash Script for Master Node**:
 
-    ./setup_k8s.sh worker    # For Worker node    
+    ```bash 
+    ./setup_k8s.sh master
+    ```   
 
+- 3. **Run the Bash Script for Worker Nodes but**:
+     
+  - **First, copy the file `/tmp/kubeadm_join_command.txt` and the content of the file and save it in each of the `worker` nodes. When the script is run with the `worker` argument, the `join_worker_node` function is called. This function reads the join command from `/tmp/kubeadm_join_command.txt` file and executes it to join the worker node to the cluster.
+ 
+  - **Then Proceed to run the script**:
+    ```bash     
+    ./setup_k8s.sh worker       
     ```
 
 ### NOTE: 
 
 **After running the `setup_k8s.sh` script in both master and worker nodes**: To enable a worker node to use kubectl with access to the master’s configuration, you have to manually copy the admin.conf file from the master node to the worker node and set up the KUBECONFIG environment variable accordingly.
     
- 1. **Copy the `admin.conf` from Master to Worker Node**: On the master node, copy **/etc/kubernetes/admin.conf** to the worker node:
+ 1. **Copy the `admin.conf` from Master to Worker Node**: On the master node, copy **/etc/kubernetes/admin.conf** to the worker node.
  
     ```bash
     sudo cat /etc/kubernetes/admin.conf
