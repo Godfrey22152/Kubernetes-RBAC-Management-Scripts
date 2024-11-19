@@ -3,12 +3,9 @@
 # Edit these variables to match your environment
 # IP address of the master node
 MASTER_NODE_IP="192.168.56.10"
-
 # CIDR range for the Pod network, for Calico CNI plugin
 POD_NETWORK_CIDR="192.168.0.0/16"
 
-# Name of the Kubernetes cluster
-CLUSTER_NAME="my-cluster"
 
 # Function to disable swap
 disable_swap() {
@@ -108,7 +105,7 @@ configure_crictl() {
 # Function to initialize Kubernetes control plane (This runs on the Master node)
 init_master_node() {
   echo "Initializing Kubernetes control plane..."
-  sudo kubeadm init --pod-network-cidr=$POD_NETWORK_CIDR --apiserver-advertise-address=$MASTER_NODE_IP --node-name master --cluster-name=$CLUSTER_NAME || { echo "Failed to initialize master node"; exit 1; }
+  sudo kubeadm init --pod-network-cidr=$POD_NETWORK_CIDR --apiserver-advertise-address=$MASTER_NODE_IP --node-name master || { echo "Failed to initialize master node"; exit 1; }
 
   # Save join command
   echo "Saving kubeadm join command..."
